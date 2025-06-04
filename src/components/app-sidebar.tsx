@@ -15,33 +15,12 @@ import { useSidebar } from '@/components/ui/sidebar'
 import lightModeToggle from '@/assets/icons/light-mode-toggle.svg'
 import darkModeToggle from '@/assets/icons/dark-mode-toggle.svg'
 import { useTheme } from './theme-provider'
-import profileImage from '@/assets/image/profile/Ryeuk.png'
+import { data } from '@/constants/data'
 
 export function AppSidebar() {
 	const { setTheme } = useTheme()
 	const { toggleSidebar } = useSidebar()
 
-	const data = {
-		user: {
-			name: 'Mustafa Wahab',
-			role: 'Admin',
-			avatar: profileImage,
-		},
-		calendars: [
-			{
-				name: 'My Calendars',
-				items: ['Personal', 'Work', 'Family'],
-			},
-			{
-				name: 'Favorites',
-				items: ['Holidays', 'Birthdays'],
-			},
-			{
-				name: 'Other',
-				items: ['Travel', 'Reminders', 'Deadlines'],
-			},
-		],
-	}
 	const chats = [{ title: 'Chat 1' }, { title: 'Chat 2' }, { title: 'Chat 3' }]
 	const projects = [{ title: 'Project Alpha' }, { title: 'Project Beta' }]
 

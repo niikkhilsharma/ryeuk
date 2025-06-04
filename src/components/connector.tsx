@@ -9,6 +9,7 @@ import ModifySvg from '@/assets/icons/modify.svg'
 import ArrowRightSvg from '@/assets/icons/arrow-right.svg'
 import { useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
+import { connectors, modify } from '@/constants/data'
 
 interface IConnector {
 	id: number
@@ -19,20 +20,6 @@ interface IConnector {
 
 export default function Connector() {
 	const [active, setActive] = useState<IConnector | null>(null)
-
-	const connectors = [
-		{ id: 1, heading: 'Database', slug: 'database', subHeading: 'connect your database', url: '/connect database' },
-		{ id: 2, heading: 'Single Link', slug: 'link', subHeading: 'connect through link', url: '/connect single-link' },
-		{ id: 3, heading: 'Multi Link', slug: 'multi-link', subHeading: 'connect multiple links', url: '/connect multi-link' },
-		{ id: 4, heading: 'Sheets', slug: 'sheets', subHeading: 'connect through google / excel sheets', url: '/connect sheets' },
-	]
-
-	const modify = [
-		{ id: 1, heading: 'Database', subHeading: 'connect your database', url: '/edit database-name' },
-		{ id: 2, heading: 'Links', subHeading: 'connect through link', url: '/edit link-name' },
-		{ id: 3, heading: 'Sheets', subHeading: 'connect multiple links', url: '/edit sheets-name' },
-		{ id: 4, heading: 'Disable Database', subHeading: 'connect through google / excel sheets', url: '/dis database-name' },
-	]
 
 	return (
 		<div className="w-full bg-[#151515] h-[calc(100vh-8rem)] flex flex-col justify-between p-4">
@@ -213,14 +200,14 @@ export default function Connector() {
 								style={{
 									background: 'linear-gradient(180deg, rgba(120, 133, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%',
 								}}
-								className="border border-[#FFFFFF14] px-4 py-1.5 rounded-md text-[#B3B3B3] hover:cursor-pointer">
+								className="border hover:opacity-90 border-[#FFFFFF14] px-4 py-1.5 rounded-md text-[#B3B3B3] hover:cursor-pointer">
 								Google Sheet
 							</button>
 							<button
 								style={{
 									background: 'linear-gradient(180deg, rgba(120, 133, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%',
 								}}
-								className="border border-[#FFFFFF14] px-4 py-1.5 rounded-md text-[#B3B3B3] hover:cursor-pointer">
+								className="border hover:opacity-90 border-[#FFFFFF14] px-4 py-1.5 rounded-md text-[#B3B3B3] hover:cursor-pointer">
 								Excel Sheet
 							</button>
 						</div>
