@@ -17,8 +17,7 @@ const buttonVariants = cva(
 				secondary: 'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',
 				ghost: 'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
 				link: 'text-primary underline-offset-4 hover:underline',
-				navigation:
-					'bg-[#191C21] text-white bg-[linear-gradient(117.58deg,rgba(120,133,255,0.16)_-47.79%,rgba(120,133,255,0)_100%)] shadow-[0px_1px_3px_0px_#0607080D] flex justify-start items-center gap-2 hover:bg-primary/95 border-l-3 border-l-[#00BCD4] font-normal',
+				navigation: 'bg-[#191C21] text-white flex justify-start items-center gap-2 border-l-3 border-l-[#00BCD4] font-normal',
 			},
 			size: {
 				default: 'h-9 px-4 py-2 has-[>svg]:px-3',

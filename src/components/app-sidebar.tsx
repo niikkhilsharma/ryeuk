@@ -16,9 +16,12 @@ import lightModeToggle from '@/assets/icons/light-mode-toggle.svg'
 import darkModeToggle from '@/assets/icons/dark-mode-toggle.svg'
 import { useTheme } from './theme-provider'
 import { data } from '@/constants/data'
+import { useState } from 'react'
+import { cn } from '@/lib/utils'
 
 export function AppSidebar() {
 	const { setTheme } = useTheme()
+	const [activeBtn, setActiveBtn] = useState<string>('Chat 1')
 	const { toggleSidebar } = useSidebar()
 
 	const chats = [{ title: 'Chat 1' }, { title: 'Chat 2' }, { title: 'Chat 3' }]
@@ -36,18 +39,34 @@ export function AppSidebar() {
 					</SidebarGroupLabel>
 					<SidebarGroupContent className="my-4">
 						<SidebarMenu className="pl-3">
-							{chats.map((item, indx) => (
+							{chats.map(item => (
 								<Button
+									onClick={() => setActiveBtn(item.title)}
+									className={cn(
+										'justify-start py-5 pl-3 font-normal text-sm transition-all duration-200',
+										item.title === activeBtn && 'text-white'
+									)}
 									style={
-										indx === 0
+										item.title === activeBtn
 											? {
 													background: 'linear-gradient(117.58deg, rgba(0, 188, 212, 0.16) -47.79%, rgba(120, 133, 255, 0) 100%)',
-													boxShadow: `0px 1px 3px 0px #0607080D, 0px 1px 2px -1px #0607080D, inset 0px 2px 12px #1A1D21A3`,
+													boxShadow: '0px 1px 3px 0px #0607080D, 0px 1px 2px -1px #0607080D, inset 0px 2px 12px #1A1D21A3',
 											  }
-											: {}
+											: undefined
 									}
-									className="justify-start py-5 pl-3 font-normal text-sm"
-									variant={indx === 0 ? 'navigation' : 'ghost'}>
+									onMouseEnter={e => {
+										if (item.title === activeBtn) {
+											;(e.currentTarget as HTMLElement).style.background =
+												'linear-gradient(117.58deg, rgba(0, 188, 212, 0.128) -47.79%, rgba(120, 133, 255, 0) 100%)'
+										}
+									}}
+									onMouseLeave={e => {
+										if (item.title === activeBtn) {
+											;(e.currentTarget as HTMLElement).style.background =
+												'linear-gradient(117.58deg, rgba(0, 188, 212, 0.16) -47.79%, rgba(120, 133, 255, 0) 100%)'
+										}
+									}}
+									variant={item.title === activeBtn ? 'navigation' : 'ghost'}>
 									{item.title}
 								</Button>
 							))}
